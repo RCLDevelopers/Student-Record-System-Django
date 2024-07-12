@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-8" style="padding-left: 300px;">
+      <div class="card">
+         <div class="card-body">
+         <div class="card-title">Add Course</div>
+         <hr>
+          <form method="POST" action="" enctype="multipart/form-data">
+            {% include 'includes/messages.html' %}
+            {% csrf_token %}
+         <div class="form-group">
+          <label for="input-6">Course Short Name</label>
+          <input class="form-control form-control-rounded" name="courseshortname" id="courseshortname" required="required"  onblur="courseAvailability()">       
+          <span id="course-availability-status" style="font-size:12px;"></span>	
+         </div>
+         <div class="form-group">
+          <label for="input-7">Course Full Name</label>
+          <input class="form-control form-control-rounded" name="coursefullname" id="coursefullname" required="required"  onblur="coursefullAvail()">         
+	<span id="course-status" style="font-size:12px;"></span>
+         </div>
+         
+         <div class="form-group">
+          <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Add Course</button>
+        </div>
+        </form>
+       </div>
+       </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Manage Subjects</h5>
+            <div class="table-responsive">
+              <table class="table">
+                {% include 'includes/messages.html' %}
+                <thead>
+                  <tr>
+                    <th scope="col">S No</th>
+                    <th scope="col">Course Name</th>
+                    <th scope="col">Subject 1</th>
+                    <th scope="col">Subject 2</th>
+                    <th scope="col">Subject 3</th>
+                    <th scope="col">Subject 4</th>
+                    <th scope="col">Subject 5</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Action</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in subjects %}
+                  <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <th scope="row">{{i.course_id.coursefullname}}({{i.course_id.courseshortname}})</th>
+                    <td>{{i.subject1}}</td>
+                    <td>{{i.subject2}}</td>
+                    <td>{{i.subject3}}</td>
+                    <td>{{i.subject4}}</td>
+                    <td>{{i.subject5}}</td>
+                    <td>{{i.created_at}}</td>
+                    <td><a href="{% url 'delete_subject' i.id %}" class="btn btn-sm bg-danger">
+                            Delete
+                            </a></td>
+                    
+                  </tr>{% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  {% endblock %}

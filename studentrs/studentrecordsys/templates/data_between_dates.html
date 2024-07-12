@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-block">
+                <h4 class="sub-title">Between Dates Report </h4>
+                <form  method="get" action="{% url 'data_between_dates' %}">
+                    
+                    {% csrf_token %}
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">From Date</label>
+                        <div class="col-sm-10">
+                            <input type="date" id="query" name="start_date" class="form-control" required="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">To Date</label>
+                        <div class="col-sm-10">
+                            <input type="date" id="query" name="end_date" class="form-control" required="">
+                        </div>
+                    </div>
+                   
+                 
+                    <button type="submit" class="btn btn-primary btn-user btn-block">Submit</button>    
+                            </form>
+                        
+                            </div>
+                            {% if stu %}
+                            <p style="font-size: 20px;color: white;text-align: center;">Data Between: "{{ start_date }} to {{ end_date }}"</p>
+            <div class="table-responsive">
+              <table class="table">
+                {% include 'includes/messages.html' %}
+                <thead>
+                  <tr>
+                   
+                    <th scope="col">S No</th>
+                    <th scope="col">Roll Number</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Subjects</th>
+                    <th scope="col">Created Date</th>
+                    <th scope="col">Action</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for i in stu %}
+                  <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <th scope="row">{{i.roll_number}}</th>
+                    <th scope="row">{{i.fname}} {{i.mname}} {{i.lname}}</th>
+                    
+                    <td>{{i.email}}</td>
+                    <td>{{i.mobno}}</td>
+                    <th scope="row">{{i.course_id.coursefullname}}({{i.course_id.courseshortname}})</th>
+                    <td>{{i.subjects_id.subject1}}+{{i.subjects_id.subject2}}+{{i.subjects_id.subject3}}+{{i.subjects_id.subject4}}+{{i.subjects_id.subject5}}</td>
+                  
+                    
+                    <td>{{i.created_at}}</td>
+                    <td><a href="{% url 'update_student' i.id %}" class="btn btn-sm bg-success">
+                      Edit
+                      </a><a href="{% url 'delete_Students' i.id %}" class="btn btn-sm bg-danger" onclick="return confirm('Are you sure you want to delete this student?')">
+                        Delete
+                    </a></td>
+                  
+                    
+                  </tr>{% endfor %}
+
+                  {% endif %}
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  {% endblock %}

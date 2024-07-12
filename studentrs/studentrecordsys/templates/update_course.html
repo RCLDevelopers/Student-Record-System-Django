@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-8" style="padding-left: 300px;">
+      <div class="card">
+         <div class="card-body">
+         <div class="card-title">Update Course</div>
+         <hr>
+          <form method="POST" action="{% url 'update_courses_details' %}" enctype="multipart/form-data">
+            {% include 'includes/messages.html' %}
+            {% csrf_token %}
+         <div class="form-group">
+          <label for="input-6">Course Short Name</label>
+          <input class="form-control form-control-rounded" name="courseshortname" id="courseshortname" value="{{courses.courseshortname}}">       
+          <input type="hidden" name="course_id" class="form-control" id="course_id" required="true" value="{{courses.id}}">
+          <span id="course-availability-status" style="font-size:12px;"></span>	
+         </div>
+         <div class="form-group">
+          <label for="input-7">Course Full Name</label>
+          <input class="form-control form-control-rounded" name="coursefullname" id="coursefullname" value="{{courses.coursefullname}}">         
+	<span id="course-status" style="font-size:12px;"></span>
+         </div>
+         
+         <div class="form-group">
+          <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Update Course</button>
+        </div>
+        </form>
+       </div>
+       </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div class="row mt-3">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Register Students</div>
+                <hr>
+                <form method="POST">
+                    {% include 'includes/messages.html' %}
+                    {% csrf_token %}
+                    <h5>Register</h5>
+                    <div class="form-group">
+                        <label for="input-6">Course Name</label>
+                        <select class="form-control form-control-rounded" name="course_id" id="course" required="required">
+                            <option value="">Select Course</option>
+                            {% for course in course %}
+                            <option value="{{ course.id }}">{{ course.courseshortname }} ({{ course.coursefullname }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-7">Select Subject</label>
+                        <select class="form-control form-control-rounded" name="subjects_id" id="subject" required="required">
+                            <option value="">Select Subject</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-7">Session</label>
+                        <input class="form-control form-control-rounded" type="text" name="session" id="session" required="required" placeholder="for example 2010-2012">         
+                  
+                       </div><div class="row">
+                       <div class="col-lg-6">
+                       <h5>Personal Informations</h5>
+                       
+                       <div class="form-group">
+                        <label for="input-7">First Name</label>
+                        <input class="form-control form-control-rounded" type="text" name="fname" id="fname" required="required" placeholder="Enter Your First Name">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Middle Name</label>
+                        <input class="form-control form-control-rounded" type="text" name="mname" id="mname" placeholder="Enter Your Middle Name">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Last Name</label>
+                        <input class="form-control form-control-rounded" type="text" name="lname" id="lname" placeholder="Enter Your Last Name">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Gender</label>
+                        <select class="form-control form-control-rounded" name="gender" id="gender" required="required">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="input-7">Guardian Name</label>
+                        <input class="form-control form-control-rounded" type="text" name="gname" id="gname" required="required" placeholder="Enter Your Guardian Name">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Occupation</label>
+                        <input class="form-control form-control-rounded" type="text" name="ocp" id="ocp" placeholder="Enter Your Occupation">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Family Income</label>
+                        <select class="form-control form-control-rounded" name="income"  id="income"required="required" >
+                            <option VALUE="">SELECT</option>
+                            <option VALUE="200000">200000</option>
+                            <option value="500000">500000</option>
+                            <option value="700000">700000</option>
+                            
+                           </select>         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Category</label>
+                        <select class="form-control form-control-rounded" name="category"  id="category" required="required" >
+                            <option VALUE="">SELECT</option>
+                            <option VALUE="general">General</option>
+                            <option value="obc">OBC</option>
+                            <option value="sc">SC</option>
+                            <option value="st">ST</option>
+                            <option value="other">Other</option>
+                           </select>         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Physically Challenged</label>
+                        <select class="form-control form-control-rounded" name="ph"  id="ph"required="required" >
+                            <option VALUE="">SELECT</option>
+                            <option VALUE="yes">Yes</option>
+                            <option value="no">No</option>
+                                   
+                           </select>         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Nationality</label>
+                        <input class="form-control form-control-rounded" type="text" name="nation" id="nation" required="required" placeholder="Enter Your Nationality">         
+                  
+                       </div>
+                      
+                       </div>
+                       <div class="col-lg-6">
+                       <h5>Contact Informations</h5>
+                       <div class="form-group">
+                        <label for="input-7">Mobile Number</label>
+                        <input class="form-control form-control-rounded" type="text" name="mobno" id="mobno" required="required" placeholder="Enter Your Mobile Number" maxlength="10">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Email Id</label>
+                        <input class="form-control form-control-rounded" type="email" name="email" id="email" required="required" placeholder="Enter Your Email">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Country</label>
+                        <input class="form-control form-control-rounded" type="text" name="country" id="country" required="required" placeholder="Enter Your Country">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">state</label>
+                        <input class="form-control form-control-rounded" name="state" id="state" required="required" placeholder="Enter Your City">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">City</label>
+                        <input class="form-control form-control-rounded" name="city" id="city" required="required" placeholder="Enter Your City">         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Permanent Address</label>
+                        <textarea class="form-control form-control-rounded" name="padd" id="padd" required="required" placeholder="Enter Your Permanent Address"></textarea>         
+                  
+                       </div>
+                       <div class="form-group">
+                        <label for="input-7">Correspondence Address</label>
+                        <textarea class="form-control form-control-rounded" rows="3" name="cadd" id="cadd" placeholder="Enter Your Correspondence Address"></textarea>         
+                  
+                       </div></div></div>
+                       <h5>Academic Informations</h5>
+                       <div class="col-lg-12">
+                        <div class="form-group">
+                        <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                     <div class="col-lg-6">
+                                                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Class<span id="" style="font-size:11px;color:red">*</span>	</label></th>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Board<span id="" style="font-size:11px;color:red">*</span>	</label></th>
+                        </div>   
+                        <div class="col-lg-6">
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Roll No</th>
+                        </div>   
+                          <div class="col-lg-6">
+                         <th>&nbsp;&nbsp;&nbsp;&nbsp;Year Of Passing<span id="" style="font-size:11px;color:red">*</span></th>
+                        </div>                                 
+                        </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr> 
+                                                        <td><div class="col-lg-6">
+                                                            <input class="form-control" type="text" name="class1">
+                                                            </div></td>
+                              <td><div class="col-lg-6">
+                              <input class="form-control" type="text" name="board1">
+                              </div></td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control" type="text" name="roll1" >
+                        </div></td>
+                        <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="pyear1" >
+                        </div></td>
+                              </tr>
+            
+                          <tr>
+                            <td><div class="col-lg-6">
+                                <input class="form-control" type="text" name="class2" >
+                                </div></td> 
+                              <td><div class="col-lg-6">
+                              <input class="form-control" type="text" name="board2" >
+                              </div></td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control" type="text" name="roll2" >
+                        </div></td>
+                        <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="pyear2" >
+                        </div></td>
+                              </tr>      
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                        </div>	
+                        <br><br>					
+                      </div>	
+                        
+                        <div class="col-lg-12">
+                        <div class="form-group">
+                        <div class="panel panel-default">
+                        <!-- /.panel-heading -->
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                     <div class="col-lg-6">
+                        <th>S.No</th>
+                        </div>   
+                        <div class="col-lg-6">
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;Subject</th>
+                        </div>   
+                          <div class="col-lg-6">
+                         <th>&nbsp;&nbsp;&nbsp;&nbsp;Marks Obtained</th>
+                        </div>                                 
+                         <div class="col-lg-6">
+                           <th>&nbsp;&nbsp;&nbsp;&nbsp;Full Marks</th>
+                        </div>                               
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr> 
+                              <td>1</td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="sub1">
+                        </div></td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="marks1">
+                        </div></td>
+                                          <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="fmarks1">
+                        </div></td>
+                              </tr>
+                              
+                         <tr> 
+                              <td>2</td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="sub2">
+                        </div></td>
+                              <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="marks2">
+                        </div></td>
+                                          <td><div class="col-lg-6">
+                        <input class="form-control"  type="text" name="fmarks2">
+                        </div></td>
+                              </tr>			  
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.table-responsive -->
+                                    
+                                    <!-- /.panel-body -->
+                                </div>
+                                <!-- /.panel -->
+                            </div>
+                        </div>	
+                                        
+                      </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Registration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+ $(document).ready(function() {
+    $('#course').change(function() {
+        var cid = $(this).val();
+        $.ajax({
+            url: '/get_subjects/',
+            type: 'GET',
+            data: {
+                'c_id': cid
+            },
+            success: function(data) {
+                // Extract subject options from JSON response
+                var subjectOptions = data.subject_options;
+                // Set HTML of subject select element
+                $('#subject').html(subjectOptions);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                // Handle errors if any
+            }
+        });
+    });
+});
+
+    </script>
+
+
+
+  {% endblock %}

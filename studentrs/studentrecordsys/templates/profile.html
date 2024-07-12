@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-8" style="padding-left: 300px;">
+      <div class="card">
+         <div class="card-body">
+         <div class="card-title">Profile Details</div>
+         <hr>
+          <form method="POST" action="{% url 'profile_update' %}" enctype="multipart/form-data">
+            {% include 'includes/messages.html' %}
+            {% csrf_token %}
+         <div class="form-group">
+          <label for="input-6">Profile Pic</label>
+          <input type="file" class="form-control form-control-rounded" name="profile_pic">
+         </div>
+         <div class="form-group">
+          <label for="input-7">First Name</label>
+          <input type="text" class="form-control form-control-rounded" name="first_name" value="{{user.first_name}}">
+         </div>
+         <div class="form-group">
+          <label for="input-8">Last Name</label>
+          <input type="text" class="form-control form-control-rounded" name="last_name" value="{{user.last_name}}">
+         </div>
+         <div class="form-group">
+          <label for="input-9">Email</label>
+          <input type="text" class="form-control form-control-rounded" name="email" value="{{user.email}}" readonly>
+         </div>
+         <div class="form-group">
+          <label for="input-10">Username</label>
+          <input type="text" class="form-control form-control-rounded" readonly="True" name="username" value="{{user.username}}">
+         </div>
+         
+         
+         <div class="form-group">
+          <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Update</button>
+        </div>
+        </form>
+       </div>
+       </div>
+    </div>
+  </div>
+  {% endblock %}

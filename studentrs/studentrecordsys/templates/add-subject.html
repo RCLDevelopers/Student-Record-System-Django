@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-3">
+    
+
+    <div class="col-lg-8" style="padding-left: 300px;">
+      <div class="card">
+         <div class="card-body">
+         <div class="card-title">Add Subjects</div>
+         <hr>
+          <form method="POST" action="" enctype="multipart/form-data">
+            {% include 'includes/messages.html' %}
+            {% csrf_token %}
+         <div class="form-group">
+          <label for="input-6">Course Name</label>
+          <select class="form-control form-control-rounded" name="course_id" id="course_id" required="required">       
+          <option value="">Select Course</option>
+          {% for i in course %}
+           
+          <option value="{{i.id}}">{{i.courseshortname}}({{i.coursefullname}})</option>{% endfor %}
+          
+        </select>
+         </div>
+         <div class="form-group">
+          <label for="input-7">Subject 1</label>
+          <input class="form-control form-control-rounded" name="subject1" id="subject1" required="required">         
+	
+         </div>
+         <div class="form-group">
+            <label for="input-7">Subject 2</label>
+            <input class="form-control form-control-rounded" name="subject2" id="subject2" required="required">         
+      
+           </div>
+           <div class="form-group">
+            <label for="input-7">Subject 3</label>
+            <input class="form-control form-control-rounded" name="subject3" id="subject3" required="required">         
+      
+           </div>
+           <div class="form-group">
+            <label for="input-7">Subject 4</label>
+            <input class="form-control form-control-rounded" name="subject4" id="subject4" required="required">         
+      
+           </div>
+           <div class="form-group">
+            <label for="input-7">Subject 5</label>
+            <input class="form-control form-control-rounded" name="subject5" id="subject5" required="required">         
+      
+           </div>
+         
+         <div class="form-group">
+          <button type="submit" class="btn btn-light btn-round px-5"><i class="icon-lock"></i> Add Subject</button>
+        </div>
+        </form>
+       </div>
+       </div>
+    </div>
+  </div>
+  {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="card mt-3">
+    <div class="card-content">
+        <div class="row row-group m-0">
+            <div class="col-12 col-lg-6 col-xl-6 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{course_count}} <span class="float-right"><i class="fa fa-files-o"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                    <a href="{% url 'manage_courses' %}"><p class="mb-0 text-white small-font">Total Courses <span class="float-right">View Details</span></p></a>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-6 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{sub_count}} <span class="float-right"><i class="fa fa-file-o"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                    <a href="{% url 'manage_subject' %}"><p class="mb-0 text-white small-font">Total Subjects <span class="float-right">View Details</span></p></a>
+                </div>
+            </div>
+          
+
+        </div>
+    </div>
+ </div> 
+
+
+
+
+
+
+
+<div class="card mt-3">
+    <div class="card-content">
+        <div class="row row-group m-0">
+
+
+            <div class="col-12 col-lg-6 col-xl-6 border-light">
+                <div class="card-body">
+                  <h5 class="text-white mb-0">{{student_count}} <span class="float-right"><i class="fa fa-users"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                       <div class="progress-bar" style="width:100%"></div>
+                    </div>
+                    <a href="{% url 'manage_students' %}"><p class="mb-0 text-white small-font">Total Students <span class="float-right">View Details</span></p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+
+{% endblock %}
